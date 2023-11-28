@@ -4,7 +4,12 @@ class ShowAllCategoryService{
 
     async execute(){
 
-        const allCategory = prismaClient.category.findMany();
+        const allCategory = prismaClient.category.findMany({
+            select:{
+                id:true,
+                name:true
+            }
+        });
 
         return allCategory;
 
